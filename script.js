@@ -14,19 +14,29 @@
 
 // Rimuovere il codice duplicato
 (function () {
+    
   const $div = document.createElement("div");
-  $div.innerText = "0";
-  $div.setAttribute("id", "counter");
+  $div.id = "buttons-container";
   document.body.append($div);
+
+  const $title = document.createElement("h1");
+  $title.innerText = "Counter";
+  $div.append($title);  
+  
+  const $h1 = document.createElement("h1");
+  $h1.innerText = "0";
+  $h1.id = "counter";
+  $div.append($h1);
+
 
   const $plus = document.createElement("button");
   $plus.innerText = "+";
-  $plus.setAttribute("id", "plus");
+  $plus.id = "plus";
   $div.append($plus);
 
   const $minus = document.createElement("button");
   $minus.innerText = "-";
-  $minus.setAttribute("id", "minus");
+  $minus.id = "minus";
   $div.append($minus);
 
   let $add = document.getElementById("plus");
@@ -36,15 +46,18 @@
   let $count = 0;
 
   $add.addEventListener("click", function () {
+    if ($count < 10) {
     $count++;
     $counter.innerText = $count;
+  }
   });
 
   $remove.addEventListener("click", function () {
+    if ($count > 0) {
     $count--;
     $counter.innerText = $count;
+  }
   });
 
-  $minus.disabled = $count < 1;
-  $plus.disabled = $count >= 10;
+
 })();
